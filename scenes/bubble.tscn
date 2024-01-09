@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqlsblveb83fi"]
+
+[ext_resource type="Script" path="res://scenes/bubble.gd" id="1_i2ikl"]
+[ext_resource type="Texture2D" uid="uid://dmuphpdurju1b" path="res://textures/shadow2.png" id="1_io4sl"]
+[ext_resource type="PackedScene" uid="uid://cwqvxve22l2sr" path="res://scenes/bubble-sprite.tscn" id="2_827m5"]
+[ext_resource type="Script" path="res://scenes/bubble-area.gd" id="5_u418r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sstp6"]
+friction = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8upvl"]
+radius = 1.0
+height = 2.59409
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gruda"]
+radius = 0.806198
+height = 2.33134
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 19
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_sstp6")
+gravity_scale = 0.3
+can_sleep = false
+max_contacts_reported = 1
+contact_monitor = true
+linear_damp_mode = 1
+linear_damp = 1.0
+angular_damp_mode = 1
+angular_damp = 1.0
+script = ExtResource("1_i2ikl")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CapsuleShape3D_8upvl")
+
+[node name="sprite" parent="." instance=ExtResource("2_827m5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142205, 0)
+alpha_scissor_threshold = 0.932
+
+[node name="Decal2" type="Decal" parent="sprite"]
+transform = Transform3D(0.618837, 0, 0, 0, 0.618837, 0, 0, 0, 0.618837, 0, -2.27287, 0)
+layers = 2
+size = Vector3(2, 11.0439, 2)
+texture_albedo = ExtResource("1_io4sl")
+normal_fade = 0.479
+cull_mask = 1
+
+[node name="area" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("5_u418r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area"]
+shape = SubResource("CapsuleShape3D_gruda")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="area_entered" from="area" to="." method="_on_area_3d_area_entered"]

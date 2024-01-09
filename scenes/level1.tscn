@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://bev4btbb6x5yq"]
+
+[ext_resource type="PackedScene" uid="uid://bsbvucc6ww5vp" path="res://scenes/character2.tscn" id="1_0onew"]
+[ext_resource type="Script" path="res://scenes/levels.gd" id="1_exidg"]
+[ext_resource type="Texture2D" uid="uid://qlaeckxm1fna" path="res://textures/skybox.png" id="2_ebguw"]
+[ext_resource type="Script" path="res://scenes/BubbleGroup.gd" id="3_fvv3f"]
+[ext_resource type="PackedScene" uid="uid://bqlsblveb83fi" path="res://scenes/bubble.tscn" id="4_51ijy"]
+[ext_resource type="Script" path="res://scenes/view.gd" id="5_5enkt"]
+[ext_resource type="Texture2D" uid="uid://dok35gaax4v63" path="res://textures/shadow.png" id="6_rky85"]
+[ext_resource type="Material" uid="uid://c4ac5p63kn1x0" path="res://scenes/grid.tres" id="7_0lbho"]
+[ext_resource type="PackedScene" uid="uid://bn3tb5i71ey4n" path="res://scenes/spikes.tscn" id="8_noqls"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7u1a4"]
+panorama = ExtResource("2_ebguw")
+
+[sub_resource type="Sky" id="Sky_uj8nt"]
+sky_material = SubResource("PanoramaSkyMaterial_7u1a4")
+
+[sub_resource type="Environment" id="Environment_wl2ew"]
+background_mode = 2
+sky = SubResource("Sky_uj8nt")
+ambient_light_source = 1
+reflected_light_source = 1
+glow_normalized = true
+fog_enabled = true
+fog_light_color = Color(1, 0.611765, 0.396078, 1)
+fog_density = 0.02
+fog_aerial_perspective = 0.213
+fog_sky_affect = 0.0
+adjustment_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_exidg")
+
+[node name="player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("1_0onew")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+view = NodePath("../view")
+
+[node name="world" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_wl2ew")
+
+[node name="view" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
+script = ExtResource("5_5enkt")
+target = NodePath("../player")
+
+[node name="Camera" type="Camera3D" parent="view"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40633, 2.99266)
+v_offset = 0.2
+current = true
+
+[node name="BubbleGroup" type="Node3D" parent="."]
+script = ExtResource("3_fvv3f")
+
+[node name="Sprite3D" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85499, 2, 1.8413)
+size = 0.5
+
+[node name="Sprite3D3" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42021, 2, 4.2326)
+size = 0.5
+
+[node name="Sprite3D4" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550656, 2, 5.40434)
+size = 0.5
+
+[node name="Sprite3D5" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48629, 2, 4.94999)
+size = 0.5
+
+[node name="Sprite3D6" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73411, 2, 3.32391)
+size = 0.5
+
+[node name="Sprite3D7" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37976, 2, 0.956524)
+size = 0.5
+
+[node name="Sprite3D8" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61455, 2, -1.86521)
+size = 0.5
+
+[node name="Sprite3D9" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96455, 2, -3.92172)
+size = 0.5
+
+[node name="Sprite3D10" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26673, 2, -4.66303)
+size = 0.5
+
+[node name="Sprite3D13" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.885439, 2, -5.14129)
+size = 0.5
+
+[node name="Sprite3D11" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03761, 2, -4.4239)
+size = 0.5
+
+[node name="Sprite3D12" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83108, 2, -2.84564)
+size = 0.5
+
+[node name="Sprite3D2" parent="BubbleGroup" instance=ExtResource("4_51ijy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.30934, 2, -0.59782)
+size = 0.5
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(2.53, 0, 0, 0, 1, 0, 0, 0, 2.52, -0.0552819, 2.0592, -0.282239)
+size = Vector3(7.07007, 16, 7.42444)
+texture_albedo = ExtResource("6_rky85")
+albedo_mix = 0.5
+cull_mask = 1
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(17, 3, 17)
+material = ExtResource("7_0lbho")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02882, 2, -0.0331526)
+operation = 2
+size = Vector3(15, 4, 15)
+material = ExtResource("7_0lbho")
+
+[node name="Node3D2" type="Node3D" parent="."]
+
+[node name="Node3D" parent="Node3D2" instance=ExtResource("8_noqls")]
+transform = Transform3D(0.857212, 0, -0.514963, 0, 1, 0, 0.514963, 0, 0.857212, 6.3578, 0, -6.43048)

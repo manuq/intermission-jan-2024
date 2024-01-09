@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://p05ofgiot227"]
+
+[ext_resource type="PackedScene" uid="uid://bsbvucc6ww5vp" path="res://scenes/character2.tscn" id="1_8eaom"]
+[ext_resource type="PackedScene" uid="uid://bqlsblveb83fi" path="res://scenes/bubble.tscn" id="1_d2mu4"]
+[ext_resource type="Material" uid="uid://dwt52lydce5b6" path="res://scenes/monday.tres" id="3_pa0kb"]
+[ext_resource type="Texture2D" uid="uid://dok35gaax4v63" path="res://textures/shadow.png" id="4_g076c"]
+[ext_resource type="Script" path="res://scenes/view.gd" id="5_22g3k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw387"]
+sky_top_color = Color(0.819608, 0.823529, 0.843137, 1)
+sky_horizon_color = Color(0.871569, 0.803922, 0.733333, 1)
+ground_bottom_color = Color(0.666667, 0.392157, 0.0901961, 1)
+ground_horizon_color = Color(0.871569, 0.803922, 0.733333, 1)
+
+[sub_resource type="Sky" id="Sky_uj8nt"]
+sky_material = SubResource("ProceduralSkyMaterial_sw387")
+
+[sub_resource type="Environment" id="Environment_wl2ew"]
+background_mode = 2
+sky = SubResource("Sky_uj8nt")
+tonemap_mode = 2
+glow_enabled = true
+glow_normalized = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0kg5"]
+size = Vector3(5.63062, 1, 5.16113)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_plwmm"]
+size = Vector2(5, 5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("view") instance=ExtResource("1_8eaom")]
+view = NodePath("../view")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wl2ew")
+
+[node name="Sprite3D" parent="." instance=ExtResource("1_d2mu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.695, 0, 1.65)
+
+[node name="Sprite3D2" parent="." instance=ExtResource("1_d2mu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.916, 0, -1.983)
+
+[node name="Sprite3D3" parent="." instance=ExtResource("1_d2mu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.916, 0, 0.017)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494385, -0.49308, 0.0834961)
+shape = SubResource("BoxShape3D_t0kg5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = ExtResource("3_pa0kb")
+mesh = SubResource("PlaneMesh_plwmm")
+skeleton = NodePath("../..")
+
+[node name="view" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("5_22g3k")
+target = NodePath("../CharacterBody3D")
+
+[node name="Camera" type="Camera3D" parent="view"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40633, 2.99266)
+current = true
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(2.53, 0, 0, 0, 1, 0, 0, 0, 2.52, 0, -0.940805, 0)
+size = Vector3(2, 10, 2)
+texture_albedo = ExtResource("4_g076c")
+cull_mask = 1

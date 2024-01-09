@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqvxve22l2sr"]
+
+[ext_resource type="Texture2D" uid="uid://dvf7yfufki0ht" path="res://textures/bubble.png" id="1_fmn4h"]
+[ext_resource type="Script" path="res://scenes/Sprite3D.gd" id="2_42pg5"]
+
+[node name="sprite" type="Sprite3D"]
+layers = 2
+cast_shadow = 0
+visibility_range_begin = 2.0
+visibility_range_begin_margin = 2.0
+visibility_range_fade_mode = 1
+modulate = Color(2, 2, 2, 1)
+pixel_size = 0.0034
+billboard = 1
+double_sided = false
+alpha_antialiasing_edge = 0.23
+texture = ExtResource("1_fmn4h")
+script = ExtResource("2_42pg5")

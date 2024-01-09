@@ -1,0 +1,18 @@
+[gd_resource type="CylinderMesh" load_steps=3 format=3 uid="uid://bb3c13jsee7yp"]
+
+[ext_resource type="Texture2D" uid="uid://c5kyfiedv4op2" path="res://textures/spikes.png" id="1_jt7jk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1x6s"]
+shading_mode = 0
+albedo_texture = ExtResource("1_jt7jk")
+heightmap_scale = 4.245
+uv1_scale = Vector3(2, 2, 2)
+
+[resource]
+material = SubResource("StandardMaterial3D_q1x6s")
+top_radius = 0.0
+bottom_radius = 0.3
+radial_segments = 5
+rings = 1
+cap_top = false
+cap_bottom = false

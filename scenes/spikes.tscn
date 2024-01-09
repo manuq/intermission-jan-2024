@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn3tb5i71ey4n"]
+
+[ext_resource type="CylinderMesh" uid="uid://bb3c13jsee7yp" path="res://scenes/spikes.tres" id="1_vrb1q"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 16
+
+[node name="Node3D" type="Node3D" parent="CSGCombiner3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.999826, 0.0169005, -0.00787306, -0.0164866, 0.998615, 0.0499611, 0.00870653, -0.0498226, 0.99872, 0, 1, 0)
+mesh = ExtResource("1_vrb1q")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.502187, 0.642346, 0.0276665, -0.642902, 0.501304, 0.0306129, 0.00710297, -0.0406464, 0.814778, 0.708222, 0.605362, 0)
+mesh = ExtResource("1_vrb1q")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.412333, -0.588516, -0.0329536, 0.589404, 0.412092, 0.0154196, 0.00626299, -0.0358396, 0.718423, -0.639506, 0.489842, 0)
+mesh = ExtResource("1_vrb1q")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.006263, 0.0358396, -0.718423, 0.589404, 0.412092, 0.0154196, 0.412333, -0.588516, -0.0329536, 0.100597, 0.489842, -0.606642)
+mesh = ExtResource("1_vrb1q")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.0459064, 0.0443714, 0.568911, 0.469072, 0.32796, 0.0122715, -0.324962, 0.46713, -0.0626548, 0.100597, 0.470589, 0.655173)
+mesh = ExtResource("1_vrb1q")

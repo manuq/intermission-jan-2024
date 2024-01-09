@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqg37fp235ir2"]
+
+[ext_resource type="Script" path="res://scenes/BubbleGroup.gd" id="1_qp306"]
+
+[node name="BubbleGroup" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17425, -1.939, -35.0365)
+script = ExtResource("1_qp306")
